@@ -100,3 +100,129 @@ document.querySelector(".query-btn").addEventListener("click",function(){
            
     window.location.href='https://maps.app.goo.gl/ygxncq4J1V5cHkvb7'
 });
+
+
+
+// ===== CUSTOMIZATION PANEL CODE ===== //
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize customization panel
+    const customizeBtn = document.getElementById('customizeBtn');
+    const closePanel = document.getElementById('closePanel');
+    const panel = document.getElementById('customizationPanel');
+    
+    if (customizeBtn && panel) {
+        customizeBtn.addEventListener('click', function() {
+            panel.classList.add('active');
+        });
+    }
+    
+    if (closePanel) {
+        closePanel.addEventListener('click', function() {
+            panel.classList.remove('active');
+        });
+    }
+    
+    // Section mapping
+    const sections = {
+        'header': document.querySelector('.header'),
+        'hero': document.querySelector('.hero-section'),
+        'welcome': document.querySelector('.mini-hero-section'),
+        'patient': document.querySelector('.patient'),
+        'footer': document.querySelector('.footer-section'),
+        'committed':document.querySelector('.committed'),
+        'schedule': document.querySelector('.schedule-section'),
+        'schedulecontent':document.querySelector('.schedule-content'),
+        'pic':document.querySelector('.pic-section'),
+        'off':document.querySelector('.off-section'),
+        'offcontent':document.querySelector('.off-content'),
+        'story':document.querySelector('.story-section'),
+        'query':document.querySelector('.query-section'),
+        'contact':document.querySelector('.contact-parent'),
+        'contactsection':document.querySelector('.contact-section'),
+        'form':document.querySelector('.form-parent'),
+        'formsection':document.querySelector('.form-section')
+    };
+    
+    const selector = document.getElementById('sectionSelector');
+    let currentSection = 'header';
+    
+    if (selector) {
+        selector.addEventListener('change', function() {
+            currentSection = this.value;
+        });
+    }
+    
+    // Font options
+    document.querySelectorAll('.font-option').forEach(option => {
+        option.addEventListener('click', function() {
+            const font = this.getAttribute('data-font');
+            if (sections[currentSection]) {
+                sections[currentSection].style.fontFamily = font;
+            }
+        });
+    });
+    
+    // Color options
+    document.querySelectorAll('.color-option').forEach(option => {
+        option.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            if (sections[currentSection]) {
+                sections[currentSection].style.color = color;
+                const textElements=sections[currentSection].querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a');
+                textElements.forEach(el=>{
+                    el.style.color=color;
+                })
+            }
+        });
+    });
+    
+    // Reset button
+    const resetBtn = document.getElementById('resetStyles');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            if (sections[currentSection]) {
+                sections[currentSection].style.fontFamily = '';
+                sections[currentSection].style.color = '';
+            }
+        });
+    }
+    
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+        if (panel && !panel.contains(e.target) && e.target !== customizeBtn) {
+            panel.classList.remove('active');
+        }
+    });
+
+
+
+    // Add this with your other event listeners in the customization panel code
+
+// Background color change
+document.querySelectorAll('.bg-color-option').forEach(option => {
+    option.addEventListener('click', function() {
+      const bgColor = this.getAttribute('data-bgcolor');
+      if (sections[currentSection]) {
+        sections[currentSection].style.backgroundColor = bgColor;
+        
+        // Special case for header to maintain transparency on scroll
+        if (currentSection === 'header') {
+          sections[currentSection].dataset.originalBg = bgColor;
+        }
+      }
+    });
+  });
+  
+  
+  
+  // Modify your scroll event for header to preserve custom background
+  const nav = document.querySelector('.header');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 0) {
+      nav.style.backgroundColor = nav.dataset.originalBg || 'lightseagreen';
+    } else {
+      nav.style.backgroundColor = nav.dataset.originalBg || 'transparent';
+    }
+  });
+  
+});

@@ -980,6 +980,122 @@ hr{
     font-size: 1.1rem;
 }
 
+
+/* Customization Panel Styles */
+.customize-btn {
+    position: fixed;
+    right: 0;
+    top: 18rem;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .customize-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .customization-panel {
+    position: fixed;
+    top: 8.5rem;
+    right: -400px;
+    width: 350px;
+    height: 70vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1001;
+    transition: right 0.3s ease;
+  }
+  
+  .customization-panel.active {
+    right: 0;
+  }
+  
+  .option-group {
+    margin-bottom: 25px;
+  }
+  
+  .option-group h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+  }
+  
+  .font-options, .color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .font-option {
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+  
+  .font-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .color-option:hover {
+    transform: scale(1.1);
+  }
+
+  .bg-color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+  
+  .bg-color-option:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+  
+  .close-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 5px;
+  }
+   
+
+
+
+
+
+
 @media(min-width:1301px){
     .header{
         width: 66%;
@@ -1100,6 +1216,9 @@ hr{
         padding-inline: 15rem;
      }
 
+
+     
+
 }
 
 @media(min-width:1275px) and (max-width:1300px){
@@ -1189,6 +1308,9 @@ hr{
         font-size: 1.3rem;
      }
 
+
+
+
     
         
 }
@@ -1258,6 +1380,10 @@ hr{
          margin-top: 3.5rem;
         
      }
+
+     .customize-btn{
+        display: none;
+    }
         
 }
 
@@ -1670,6 +1796,10 @@ hr{
     font-size: 1.2rem;
 }
 
+.customize-btn{
+    display: none;
+}
+
 
   
 
@@ -1940,6 +2070,14 @@ hr{
         width: 2rem;
         font-size: 1.2rem;
     }
+
+
+
+    .customize-btn{
+        display: none;
+    }
+    
+
  
      
      
@@ -2411,6 +2549,10 @@ hr{
         line-height: 1.8rem;
        
     }
+
+    .customize-btn{
+        display: none;
+    }
     
 
 
@@ -2446,5 +2588,12 @@ hr{
         width: 85%;
         margin-left: .8rem;
     }
+
+
+    .customize-btn{
+        display: none;
+    }
+    
+
 
 }
